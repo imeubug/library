@@ -2,3 +2,52 @@
  * date: October 9th, 2020
  * name: Jii Eu
  */
+
+ #bookshelf {
+     display: flex;
+     flex-wrap: wrap;
+ }
+
+ .card {
+     min-width: 200px;
+     min-height: 200px;
+     margin: 5px;
+     background: #fff;
+     cursor: pointer;
+
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+
+    text-align: center;
+  }
+  
+  /* Set the size of the book cover in card */
+  .card img {
+      padding: 5px;
+      width: 125px;
+      height: 150px;
+  }
+
+  /* On mouse-over, add a deeper shadow */
+  .card:hover {
+    transform: scale(1.05);
+  }
+
+  /* Add some padding inside the card container */
+  .container {
+    padding: 2px 16px;
+  }
+
+  #new-book img {
+    margin-top: 2.5em;
+    opacity: 25%;
+    width: 100px;
+    height: 100px;
+
+    transition: opacity 0.3s;
+  }
+
+  #new-book :hover{
+    opacity: 50%;
+  }
