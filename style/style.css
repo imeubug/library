@@ -8,16 +8,19 @@
      flex-wrap: wrap;
  }
 
+ /******************************************
+   * book cards
+   *****************************************/
  .card {
      min-width: 200px;
      min-height: 200px;
      margin: 5px;
-     background: #fff;
      cursor: pointer;
 
     /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
+    border-radius: 10%;
 
     text-align: center;
   }
@@ -25,7 +28,7 @@
   /* Set the size of the book cover in card */
   .card img {
       padding: 5px;
-      width: 125px;
+      width: 135px;
       height: 150px;
   }
 
@@ -39,7 +42,11 @@
     padding: 2px 16px;
   }
 
-  #new-book img {
+  /******************************************
+   * add button
+   *****************************************/
+  /* A button to add a new book */
+  #add-book img {
     margin-top: 2.5em;
     opacity: 25%;
     width: 100px;
@@ -48,6 +55,27 @@
     transition: opacity 0.3s;
   }
 
-  #new-book :hover{
+  #add-book :hover{
     opacity: 50%;
   }
+
+  /******************************************
+   * Form to add a new book
+   *****************************************/
+   #new-book-form {
+       /* center the form */
+       margin: 0;
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+
+       /* design the form */
+       border-radius: 10%;
+       padding: 15px;
+       background: white;
+       box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+
+       width: 20em;
+       height: 10em;
+   }
