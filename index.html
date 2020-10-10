@@ -11,8 +11,28 @@
 <body>
     <header><h1>Library</h1></header>
     <div id="bookshelf">
-        <div id="new-book" class="card">
+        <div id="add-book" class="card" onclick="toggleForm()">
             <img src="assets/addNewBook.png" alt="Add new book">
+        </div>
+    </div>
+
+    <div id="new-book-form" style="display: none">
+        <div id="form-body">
+            Title:
+            <input type="text" name="title" id="title">
+            <br>
+
+            Author:
+            <input type="text" name="author" id="author">
+            <br>
+
+            <label for="read"> Read </label>
+            <input type="radio" name="read" id="read" value="read" checked>
+            <label for="reading"> Reading </label>
+            <input type="radio" name="read" id="reading" value="reading">
+            <label for="not-yet"> Not yet </label>
+            <input type="radio" name="read" id="not-yet" value="not-yet">
+
         </div>
     </div>
 </body>

@@ -4,6 +4,7 @@
  */
 
 const bookshelf = document.getElementById('bookshelf');
+const newBookForm = document.getElementById('new-book-form');
 
 let myLibrary = [];
 addBook();
@@ -22,11 +23,12 @@ function Book(title, author, pages, read) {
 }
 
 function addBook() {
-    myLibrary.push(new Book('Stone of Ages', 'Jeon', 500, true));
-    myLibrary.push(new Book('Stone of Ages', 'Jeon', 500, true));
-    myLibrary.push(new Book('Stone of Ages', 'Jeon', 500, true));
-    myLibrary.push(new Book('Stone of Ages', 'Jeon', 500, true));
-    myLibrary.push(new Book('Stone of Ages', 'Jeon', 500, true));
+    myLibrary.push(new Book('Stone of Ages 1', 'Jeon Min Hee', 500, 'read'));
+    myLibrary.push(new Book('Stone of Ages 2', 'Jeon Min Hee', 500, 'read'));
+    myLibrary.push(new Book('Stone of Ages 3', 'Jeon Min Hee', 500, 'read'));
+    myLibrary.push(new Book('Stone of Ages 4', 'Jeon Min Hee', 500, 'reading'));
+    myLibrary.push(new Book('책방', '저자', 500, 'not-yet'));
+    myLibrary.push(new Book('11の殺人', '東野圭吾', 500, 'not-yet'));
 }
 
 function populate() {
@@ -52,4 +54,13 @@ function populate() {
         bookshelf.appendChild(card);
     }
     bookshelf.appendChild(newBookCard);
+}
+
+function toggleForm() {
+    let hidden = newBookForm.style.display;
+    newBookForm.style.display = (hidden === 'none') ? 'block' : 'none';
+
+    let opa = bookshelf.style.opacity;
+    bookshelf.style.opacity = (opa == 0.3) ? 1.0 : 0.3;
+    
 }
