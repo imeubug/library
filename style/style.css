@@ -3,20 +3,38 @@
  * name: Jii Eu
  */
 
- /*
+/*
   * stack overflow: prevent selecton
   * begin::
- */ 
- *  {
-    user-select: none;
-   -khtml-user-select: none;
-   -o-user-select: none;
-   -moz-user-select: -moz-none;
-   -webkit-user-select: none;
+ */
+
+::selection {
+    background: transparent;
+    color: inherit;
 }
 
-::selection { background: transparent;color:inherit; }
-::-moz-selection { background: transparent;color:inherit; }
+::-moz-selection {
+    background: transparent;
+    color: inherit;
+}
+
+.card,
+button {
+    /* iOS Safari */
+    -webkit-touch-callout: none;
+    /* Safari */
+    -webkit-user-select: none;
+    /* Konqueror HTML */
+    -khtml-user-select: none;
+    /* Firefox */
+    -moz-user-select: none;
+    /* Internet Explorer/Edge */
+    -ms-user-select: none;
+    /* Non-prefixed version, currently
+    supported by Chrome and Opera */
+    user-select: none;
+}
+
 /* end:: */
 
 #bookshelf {
@@ -43,7 +61,7 @@
 
 /* Set the size of the book cover in card */
 .card img {
-    padding: 5px;
+    padding: 15px 5px 0 5px;
     width: 135px;
     height: 150px;
     border-radius: 10%;
@@ -52,6 +70,8 @@
 /* On mouse-over, add a deeper shadow */
 .card:hover {
     transform: scale(1.05);
+    box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.4);
+
 }
 
 /* Add some padding inside the card container */
@@ -98,21 +118,41 @@
 }
 
 /******************************************
+   * Form buttons
+*****************************************/
+div#form-btn {
+    display: flex;
+    width: 50%;
+    margin: 0 auto;
+}
+
+
+/******************************************
    * Legend - Read, Reading, Not yet
  *****************************************/
 
  div#header {
-     display: flex;
-     flex-direction: row;
- }
- div#header button {
-     border: none;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 5%;
-    margin: 30px 0 15px 40px;
-    width: 70px;
+    font-family: 'Caveat', cursive;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    font-size: 70px;
+
+    margin-bottom: 20px;
 }
 
+div#header button {
+    font-family: 'Caveat', cursive;
+    font-weight: bold;
+    font-size: 25px;
+
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 5%;
+    margin-left: 33px;
+    width: 110px;
+
+}
 
 div#header button#legend-read {
     background-color: rgb(171, 245, 171);
