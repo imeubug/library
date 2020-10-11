@@ -7,8 +7,13 @@ const bookshelf = document.getElementById('bookshelf');
 const newBookForm = document.getElementById('new-book-form');
 const addNewBookButton = document.getElementById('add-new-book');
 
-let myLibrary = [];
-// addBook();
+const book1 = [new Book('殺人ゲーム', '東野 圭吾', 'reading'), false];
+const book2 = [new Book('세월의 돌 1', '전민희', 'read'), false];
+const book3 = [new Book('세월의 돌 2', '전민희', 'read'), false];
+const book4 = [new Book('11문자의 살인', '히가시노 케이고', 'not-yet'), false];
+
+let myLibrary = [book1, book2, book3, book4];
+
 populate();
 
 function Book(title, author, read) {
@@ -22,11 +27,11 @@ function Book(title, author, read) {
     }
 }
 
-addNewBookButton.addEventListener('click', function(e) {
+addNewBookButton.addEventListener('click', function (e) {
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     let read = document.getElementsByName('read');
-    for(v in read) {
+    for (v in read) {
         if (read[v].checked) {
             read = read[v].value;
             break;
@@ -38,28 +43,22 @@ addNewBookButton.addEventListener('click', function(e) {
     toggleForm();
 });
 
-function addBook() {
-    myLibrary.push([new Book('Stone of Ages 1', 'Jeon Min Hee', 500, 'read'), false]);
-    myLibrary.push([new Book('Stone of Ages 2', 'Jeon Min Hee', 500, 'read'), false]);
-    myLibrary.push([new Book('Stone of Ages 3', 'Jeon Min Hee', 500, 'read'), false]);
-    myLibrary.push([new Book('Stone of Ages 4', 'Jeon Min Hee', 500, 'reading'), false]);
-    myLibrary.push([new Book('title', 'author', 500, 'not-yet'), false]);
-    myLibrary.push([new Book('11の殺人', '東野 圭吾', 500, 'not-yet'), false]);
-}
-
 function populate() {
-    // const newBookCard = bookshelf.firstElementChild;
-
     for (index in myLibrary) {
-        if(myLibrary[index][1]) continue;
+        if (myLibrary[index][1]) continue;
         let card = document.createElement('div');
-        card.className = 'card';
+        card.addEventListener('click', e => {
+            toggleRead(e);
+        });
+        card.classList.add('card', myLibrary[index][0].read);
 
         let img = document.createElement('img');
         // SAMPLE IMAGE
         img.src = 'assets/sample.jpg';
         img.alt = 'Sample book image';
-
+        img.addEventListener('click', e => {
+            e.stopPropagation();
+        });
         let container = document.createElement('div');
         container.className = 'container';
         let book = myLibrary[index];
@@ -71,7 +70,6 @@ function populate() {
 
         bookshelf.appendChild(card);
     }
-    // bookshelf.appendChild(newBookCard);
 }
 
 function toggleForm() {
@@ -80,5 +78,8 @@ function toggleForm() {
 
     let opa = bookshelf.style.opacity;
     bookshelf.style.opacity = (opa == 0.3) ? 1.0 : 0.3;
-    
+}
+
+function toggleRead(e) {
+    console.log(e.target);
 }
