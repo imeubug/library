@@ -3,6 +3,8 @@
  * name: Jii Eu
  */
 
+ "use strict";
+
  /**
  * stack overflow: disable right click
  * begin::
@@ -37,6 +39,7 @@ function Book(title, author, img, read) {
 }
 
 addNewBookButton.addEventListener('click', e => {
+    e.preventDefault();
     let titleTag = document.getElementById('title')
     let authorTag = document.getElementById('author')
     let imgFileTag = document.getElementById('img');
@@ -59,7 +62,7 @@ addNewBookButton.addEventListener('click', e => {
 
     // set 'read' to the correct Radio input value
     let read = document.getElementsByName('read');
-    for (v in read) {
+    for (let v in read) {
         if (read[v].checked) {
             read = read[v].value;
             break;
@@ -79,7 +82,7 @@ addNewBookButton.addEventListener('click', e => {
 });
 
 function populate() {
-    for (index in myLibrary) {
+    for (let index in myLibrary) {
         let book = myLibrary[index];
         // skip if a book is already displayed
         if (book[1]) continue;
