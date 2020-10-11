@@ -45,21 +45,17 @@ addNewBookButton.addEventListener('click', function (e) {
 
 function populate() {
     for (index in myLibrary) {
+        /* skip if a book is already displayed */
         if (myLibrary[index][1]) continue;
+
         let card = document.createElement('div');
-        card.addEventListener('click', e => {
-            toggleRead(e);
-        });
         card.classList.add('card', myLibrary[index][0].read);
 
         let img = document.createElement('img');
         // SAMPLE IMAGE
         img.src = 'assets/sample.jpg';
         img.alt = 'Sample book image';
-        img.addEventListener('click', e => {
-            e.stopPropagation();
-        });
-        let container = document.createElement('div');
+        let container = document.createElement('p');
         container.className = 'container';
         let book = myLibrary[index];
         book[1] = true;
@@ -67,6 +63,9 @@ function populate() {
 
         card.appendChild(img);
         card.appendChild(container);
+        card.addEventListener('click', e => {
+            if (e.target.tagName === 'DIV') toggleRead(e);
+        });
 
         bookshelf.appendChild(card);
     }
@@ -80,6 +79,15 @@ function toggleForm() {
     bookshelf.style.opacity = (opa == 0.3) ? 1.0 : 0.3;
 }
 
+/*
+* toggle:
+* read -> reading -> not-yet
+ */
 function toggleRead(e) {
-    console.log(e.target);
+    let curr = e.target.className.split(' ')[1];
+    e.target.classList.remove(curr);
+
+    if (curr === 'read') e.target.classList.add('reading');
+    else if (curr === 'reading') e.target.classList.add('not-yet');
+    else if(curr === 'not-yet') e.target.classList.add('read');
 }
