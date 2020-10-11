@@ -9,7 +9,14 @@
 </head>
 
 <body>
-    <header><h1>Library</h1></header>
+    <div id="header">
+        <header><h1>Library</h1></header>
+        <div id="legend">
+            <button id="legend-read">read</button>
+            <button id="legend-reading">reading</button>
+            <button id="legend-not-yet">not yet</button>
+        </div>
+    </div>
     <div id="bookshelf">
         <div id="add-book" class="card" onclick="toggleForm()">
             <img src="assets/addNewBook.png" alt="Add new book">
@@ -27,11 +34,11 @@
             <br>
 
             <label for="read"> Read </label>
-            <input type="radio" name="read" id="read" value="read" checked>
+            <input type="radio" name="read" id="read" value="read" checked> <br>
             <label for="reading"> Reading </label>
-            <input type="radio" name="read" id="reading" value="reading">
+            <input type="radio" name="read" id="reading" value="reading"> <br>
             <label for="not-yet"> Not yet </label>
-            <input type="radio" name="read" id="not-yet" value="not-yet">
+            <input type="radio" name="read" id="not-yet" value="not-yet"> <br>
 
             <input id="add-new-book" type="button" value="submit">
         </div>
