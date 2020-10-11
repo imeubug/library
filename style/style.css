@@ -67,6 +67,12 @@ button {
     border-radius: 10%;
 }
 
+/* Set the text desgin for Card */
+.card p {
+    font-family: 'Nanum Gothic', sans-serif;
+    font-size: 15px;
+}
+
 /* On mouse-over, add a deeper shadow */
 .card:hover {
     transform: scale(1.05);
@@ -113,19 +119,35 @@ button {
     background: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 
-    width: 20em;
-    height: 10em;
+    width: 25em;
+    height: 11em;
 }
+
+#form-body {
+    margin: 5px;
+}
+
+#form-body input {
+    margin: 3px;
+}
+
 
 /******************************************
    * Form buttons
 *****************************************/
 div#form-btn {
-    display: flex;
-    width: 50%;
-    margin: 0 auto;
+    width: 45%;
+    margin: 15px auto;
 }
 
+#form-body #radio-btn div {
+    width: 100%;
+}
+
+#form-body div#radio-btn {
+    display: flex;
+    align-content: space-between;
+}
 
 /******************************************
    * Legend - Read, Reading, Not yet
@@ -143,7 +165,6 @@ div#form-btn {
 
 div#header button {
     font-family: 'Caveat', cursive;
-    font-weight: bold;
     font-size: 25px;
 
     border: none;

@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Nanum+Gothic&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="./style/style.css">
 
     <title>Library</title>
@@ -40,13 +42,22 @@
 
                 <label for="img">Book cover:</label>
                 <input type="file" id="img" name="img" accept=".png,.jpg,.jpeg"> <br>
+                <br>
 
-                <label for="read"> Read </label>
-                <input type="radio" name="read" id="read" value="read"> <br>
-                <label for="reading"> Reading </label>
-                <input type="radio" name="read" id="reading" value="reading"> <br>
-                <label for="not-yet"> Not yet </label>
-                <input type="radio" name="read" id="not-yet" value="not-yet" checked> <br>
+                <div id="radio-btn">
+                    <div>
+                        <label for="read"> Read </label>
+                        <input type="radio" name="read" id="read" value="read">
+                    </div>
+                    <div>
+                        <label for="reading"> Reading </label>
+                        <input type="radio" name="read" id="reading" value="reading">
+                    </div>
+                    <div>
+                        <label for="not-yet"> Not yet </label>
+                        <input type="radio" name="read" id="not-yet" value="not-yet" checked> <br>
+                    </div>
+                </div>
 
                 <!-- <input id="add-new-book" type="button" value="submit"> -->
                 <div id="form-btn">

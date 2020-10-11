@@ -16,7 +16,7 @@ const addNewBookButton = document.getElementById('add-new-book');
 
 const book1 = [new Book('test', '東野 圭吾', 'default.png', 'reading'), false];
 const book2 = [new Book('11문자 살인사건', '히가시노 케이고', 'default.png', 'not-yet'), false];
-const book3 = [new Book('세월의 돌', '전민희', 'sample.jpg', 'read'), false];
+const book3 = [new Book('Stone of Ages', 'Jeon Min Hee', 'sample.jpg', 'read'), false];
 const book4 = [new Book('세월의 돌', '전민희', 'sample.jpg', 'read'), false];
 const book5 = [new Book('세월의 돌', '전민희', 'sample.jpg', 'read'), false];
 
