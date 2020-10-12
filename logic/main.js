@@ -101,9 +101,13 @@ function populate() {
         card.appendChild(img);
         card.appendChild(container);
         card.addEventListener('click', e => {
+            e.preventDefault();
             if (e.target.tagName === 'DIV') toggleRead(e);
         });
-
+        card.addEventListener('contextmenu', e => {
+            e.preventDefault();
+            if (e.target.tagName === 'DIV') removeCard(e.target);
+        })
         bookshelf.appendChild(card);
     }
 }
@@ -138,4 +142,8 @@ function toggleRead(e) {
     if (curr === 'read') e.target.classList.add('reading');
     else if (curr === 'reading') e.target.classList.add('not-yet');
     else if (curr === 'not-yet') e.target.classList.add('read');
+}
+
+function removeCard(elem) {
+    bookshelf.removeChild(elem);
 }
