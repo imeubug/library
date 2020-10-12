@@ -1,15 +1,18 @@
 ## Project Library
 A toy project to manage books I have read in 2020.
 
+### Tech Stack
+- Language: JavaScript (HTML/CSS)
+- Project Setup: Vanilla JS
+
 ### Progress
-![demo](example.gif)
+![demo](demo.gif)
 
 ### Todo
 - [ ] CRUD
   * [x] Create
-  * [x] Read
-  * [ ] Update
-  * [ ] Delete
+  * [x] Read (`populate()`)
+  * [x] Delete (right click)
 - Card
   * [x] Toggle read status on click
 - Card form
