@@ -9,7 +9,7 @@ A toy project to manage books I have read in 2020.
 ![demo](demo.gif)
 
 ### Todo
-- [ ] CRUD
+- [X] CRUD (no Update)
   * [x] Create
   * [x] Read (`populate()`)
   * [x] Delete (right click)
@@ -18,7 +18,5 @@ A toy project to manage books I have read in 2020.
 - Card form
   * [x] file chooser for the book cover
   * [x] add `default.png` when img file is not specified
-- Database
-  + local storage?
-  + firebase?
-  + other?
+-  Database
+  + [x] local storage

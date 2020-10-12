@@ -16,14 +16,16 @@ const bookshelf = document.getElementById('bookshelf');
 const newBookForm = document.getElementById('new-book-form');
 const addNewBookButton = document.getElementById('add-new-book');
 
-const book1 = [new Book('test', '東野 圭吾', 'default.png', 'reading'), false];
-const book2 = [new Book('11문자 살인사건', '히가시노 케이고', 'default.png', 'not-yet'), false];
-const book3 = [new Book('Stone of Ages', 'Jeon Min Hee', 'sample.jpg', 'read'), false];
-const book4 = [new Book('세월의 돌', '전민희', 'sample.jpg', 'read'), false];
-const book5 = [new Book('세월의 돌', '전민희', 'sample.jpg', 'read'), false];
+// const book1 = new Book('test', '東野 圭吾', 'default.png', 'reading');
+// const book2 = new Book('11문자 살인사건', '히가시노 케이고', 'default.png', 'not-yet');
+// const book3 = new Book('Stone of Ages', 'Jeon Min Hee', 'sample.jpg', 'read');
+// const book4 = new Book('세월의 돌', '전민희', 'sample.jpg', 'read');
+// const book5 = new Book('세월의 돌', '전민희', 'sample.jpg', 'read');
 
-let myLibrary = [book1, book2, book3, book4, book5];
+// let myLibrary = [book1, book2, book3, book4, book5];
 
+let myLibrary = localStorage.getItem('myBooks');
+myLibrary = (myLibrary) ? JSON.parse(myLibrary) : [];
 populate();
 
 function Book(title, author, img, read) {
@@ -70,7 +72,7 @@ addNewBookButton.addEventListener('click', e => {
     }
 
     // add a book to an array
-    myLibrary.push([new Book(titleTag.value, authorTag.value, filename, read), false]);
+    myLibrary.push(new Book(titleTag.value, authorTag.value, filename, read));
     
     // reset all fields
     titleTag.value = '';
@@ -85,28 +87,28 @@ function populate() {
     for (let index in myLibrary) {
         let book = myLibrary[index];
         // skip if a book is already displayed
-        if (book[1]) continue;
+        if (book.show) continue;
 
         let card = document.createElement('div');
-        card.classList.add('card', book[0].read);
+        card.classList.add('card', book.read);
 
         let img = document.createElement('img');
-        img.src = 'assets/' + book[0].img;
+        img.src = 'assets/' + book.img;
         img.alt = 'Sample book image';
         let container = document.createElement('p');
         container.className = 'container';
-        book[1] = true;
-        container.innerText = `${(book[0]).title} - ${(book[0]).author}`;
+        book.show = true;
+        container.innerText = `${book.title} - ${book.author}`;
 
         card.appendChild(img);
         card.appendChild(container);
         card.addEventListener('click', e => {
             e.preventDefault();
-            if (e.target.tagName === 'DIV') toggleRead(e);
+            if (e.target.tagName === 'DIV') toggleRead(e, index);
         });
         card.addEventListener('contextmenu', e => {
             e.preventDefault();
-            if (e.target.tagName === 'DIV') removeCard(e.target);
+            if (e.target.tagName === 'DIV') removeCard(e.target, index);
         })
         bookshelf.appendChild(card);
     }
@@ -135,15 +137,36 @@ function toggleForm() {
 * toggle:
 * read -> reading -> not-yet
  */
-function toggleRead(e) {
+function toggleRead(e, index) {
     let curr = e.target.className.split(' ')[1];
     e.target.classList.remove(curr);
 
-    if (curr === 'read') e.target.classList.add('reading');
-    else if (curr === 'reading') e.target.classList.add('not-yet');
-    else if (curr === 'not-yet') e.target.classList.add('read');
+    if (curr === 'read') {
+        myLibrary[index].read = 'reading';
+        e.target.classList.add('reading');
+    }
+    else if (curr === 'reading') {
+        myLibrary[index].read = 'not-yet';
+        e.target.classList.add('not-yet');
+    }
+    else if (curr === 'not-yet') {
+        myLibrary[index].read = 'read';
+        e.target.classList.add('read');
+    }
 }
 
-function removeCard(elem) {
+function removeCard(elem, index) {
     bookshelf.removeChild(elem);
+    console.log(elem, index);
+    const _index = myLibrary.indexOf(myLibrary[index]);
+    if (_index > -1) {
+        myLibrary.splice(_index, 1);
+    }
+}
+
+window.onbeforeunload = function() {
+    for (let index in myLibrary) {
+        myLibrary[index].show = false;
+    }
+    localStorage.setItem('myBooks', JSON.stringify(myLibrary));
 }
