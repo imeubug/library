@@ -4,6 +4,7 @@ A toy project to manage books I have read in 2020.
 ### Tech Stack
 - Language: JavaScript (HTML/CSS)
 - Project Setup: Vanilla JS
+- Database: localStorage
 
 ### Progress
 ![demo](demo.gif)
