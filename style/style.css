@@ -62,8 +62,8 @@ button {
 /* Set the size of the book cover in card */
 .card img {
     padding: 15px 5px 0 5px;
-    width: 135px;
-    height: 150px;
+    width: 125px;
+    height: 140px;
     border-radius: 10%;
 }
 
@@ -79,6 +79,7 @@ button {
 .card p {
     font-family: 'Nanum Gothic', sans-serif;
     font-size: 15px;
+    width: 150px;
 }
 
 /* On mouse-over, add a deeper shadow */

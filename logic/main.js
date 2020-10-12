@@ -93,7 +93,7 @@ function populate() {
         card.classList.add('card', book.read);
 
         let img = document.createElement('img');
-        img.src = 'assets/' + book.img;
+        img.src = 'assets/books/' + book.img;
         img.alt = 'Sample book image';
         let container = document.createElement('p');
         container.className = 'container';
