@@ -21,3 +21,5 @@ A toy project to manage books I have read in 2020.
   * [x] add `default.png` when img file is not specified
 -  Database
   + [x] local storage
+- [ ] filter by `read`, `reading`, `not-yet`
+  + When one of legends is clicked (on top of the page), filter list of books by its status.
