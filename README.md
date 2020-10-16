@@ -18,7 +18,7 @@ A toy project to manage books I have read in 2020.
 - Card form
   * [x] file chooser for the book cover
   * [x] add `default.png` when img file is not specified
--  Database
+- Database
   * [x] local storage
 - Filter
   * [x] filter by `read`, `reading`, `not-yet`
@@ -29,6 +29,7 @@ A toy project to manage books I have read in 2020.
 2020-10-16
 - Filtering added.
   + Can filter books by `read`, `reading`, and `not-yet`.
+  + Code refactored.
 - Add book counts.
 
 2020-10-12
