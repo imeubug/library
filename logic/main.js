@@ -3,9 +3,9 @@
  * name: Jii Eu
  */
 
- "use strict";
+"use strict";
 
- /* disable right click */
+/* disable right click */
 document.addEventListener('contextmenu', event => event.preventDefault());
 
 const bookshelf = document.getElementById('bookshelf');
@@ -66,7 +66,7 @@ addNewBookButton.addEventListener('click', e => {
 
     // add a book to an array
     myLibrary.push(new Book(titleTag.value, authorTag.value, filename, read));
-    
+
     // reset all fields
     titleTag.value = '';
     authorTag.value = '';
@@ -164,45 +164,18 @@ function removeCard(elem, index) {
     bookCount -= 1;
 }
 
-/**
- * TODO:
- * Refactor below 3 eventListeners for legends (read, reading, not-yet)
- */
-legends.children[0].addEventListener('click', function() {
-    let count = 0;
 
+function filterBooks(filterStr) {
+    let count = 0;
     for (let x in bookshelf.children) {
-        if (x==0) continue;
-        if(bookshelf.children[x].tagName === 'DIV') {
-            if (currentView === 'read') {
+        if (x == 0) continue;
+        if (bookshelf.children[x].tagName === 'DIV') {
+            if (currentView === filterStr) {
                 bookshelf.children[x].style.display = 'block';
                 continue;
             }
 
-            if(bookshelf.children[x].className.split(' ').indexOf('read') == -1) {
-                count += 1;
-                bookshelf.children[x].style.display = 'none';
-            }  else {
-                bookshelf.children[x].style.display = 'block';
-            }
-        }
-    }
-    bookCountTag.innerText = bookCount - count;
-    currentView = (currentView === 'read') ? '' : 'read';
-})
-
-legends.children[1].addEventListener('click', function() {
-    let count = 0;
-
-    for (let x in bookshelf.children) {
-        if (x==0) continue;
-        if(bookshelf.children[x].tagName === 'DIV') {
-            if (currentView === 'reading') {
-                bookshelf.children[x].style.display = 'block';
-                continue;
-            }
-
-            if(bookshelf.children[x].className.split(' ').indexOf('reading') == -1) {
+            if (bookshelf.children[x].className.split(' ').indexOf(filterStr) == -1) {
                 count += 1;
                 bookshelf.children[x].style.display = 'none';
             } else {
@@ -210,40 +183,18 @@ legends.children[1].addEventListener('click', function() {
             }
         }
     }
-
     bookCountTag.innerText = bookCount - count;
-    currentView = (currentView === 'reading') ? '' : 'reading';
-})
+    currentView = (currentView === filterStr) ? '' : filterStr;
+}
 
-legends.children[2].addEventListener('click', function() {    
-    let count = 0;
-
-    for (let x in bookshelf.children) {
-        if (x==0) continue;
-        if(bookshelf.children[x].tagName === 'DIV') {
-            if (currentView === 'not-yet') {
-                bookshelf.children[x].style.display = 'block';
-                continue;
-            }
-
-            if(bookshelf.children[x].className.split(' ').indexOf('not-yet') == -1) {
-                count += 1;
-                bookshelf.children[x].style.display = 'none';
-            }  else {
-                bookshelf.children[x].style.display = 'block';
-            }
-        }
-    }
-
-    bookCountTag.innerText = bookCount - count;
-    currentView = (currentView === 'not-yet') ? '' : 'not-yet';
-})
-
+legends.children[0].addEventListener('click', function () { filterBooks('read'); })
+legends.children[1].addEventListener('click', function () { filterBooks('reading'); })
+legends.children[2].addEventListener('click', function () { filterBooks('not-yet'); })
 
 /**
  * When the page is closed or refreshed, update the localStorage
  */
-window.onbeforeunload = function() {
+window.onbeforeunload = function () {
     for (let index in myLibrary) {
         myLibrary[index].show = false;
     }
