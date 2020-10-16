@@ -5,28 +5,21 @@
 
  "use strict";
 
- /**
- * stack overflow: disable right click
- * begin::
- */
+ /* disable right click */
 document.addEventListener('contextmenu', event => event.preventDefault());
-/* end:: */
 
 const bookshelf = document.getElementById('bookshelf');
 const newBookForm = document.getElementById('new-book-form');
 const addNewBookButton = document.getElementById('add-new-book');
-
-// const book1 = new Book('test', '東野 圭吾', 'default.png', 'reading');
-// const book2 = new Book('11문자 살인사건', '히가시노 케이고', 'default.png', 'not-yet');
-// const book3 = new Book('Stone of Ages', 'Jeon Min Hee', 'sample.jpg', 'read');
-// const book4 = new Book('세월의 돌', '전민희', 'sample.jpg', 'read');
-// const book5 = new Book('세월의 돌', '전민희', 'sample.jpg', 'read');
-
-// let myLibrary = [book1, book2, book3, book4, book5];
+const legends = document.getElementById('legend');
+const bookCountTag = document.getElementById('book-count');
+let bookCount = 0;
+let currentView = '';
 
 let myLibrary = localStorage.getItem('myBooks');
 myLibrary = (myLibrary) ? JSON.parse(myLibrary) : [];
 populate();
+
 
 function Book(title, author, img, read) {
     this.title = title;
@@ -112,6 +105,9 @@ function populate() {
         })
         bookshelf.appendChild(card);
     }
+
+    bookCount = myLibrary.length;
+    bookCountTag.innerText = bookCount;
 }
 
 /**
@@ -164,6 +160,85 @@ function removeCard(elem, index) {
     }
 }
 
+/**
+ * TODO:
+ * Refactor below 3 eventListeners for legends (read, reading, not-yet)
+ */
+legends.children[0].addEventListener('click', function() {
+    let count = 0;
+
+    for (let x in bookshelf.children) {
+        if (x==0) continue;
+        if(bookshelf.children[x].tagName === 'DIV') {
+            if (currentView === 'read') {
+                bookshelf.children[x].style.display = 'block';
+                continue;
+            }
+
+            if(bookshelf.children[x].className.split(' ').indexOf('read') == -1) {
+                count += 1;
+                bookshelf.children[x].style.display = 'none';
+            }  else {
+                bookshelf.children[x].style.display = 'block';
+            }
+        }
+    }
+    bookCountTag.innerText = bookCount - count;
+    currentView = (currentView === 'read') ? '' : 'read';
+})
+
+legends.children[1].addEventListener('click', function() {
+    let count = 0;
+
+    for (let x in bookshelf.children) {
+        if (x==0) continue;
+        if(bookshelf.children[x].tagName === 'DIV') {
+            if (currentView === 'reading') {
+                bookshelf.children[x].style.display = 'block';
+                continue;
+            }
+
+            if(bookshelf.children[x].className.split(' ').indexOf('reading') == -1) {
+                count += 1;
+                bookshelf.children[x].style.display = 'none';
+            } else {
+                bookshelf.children[x].style.display = 'block';
+            }
+        }
+    }
+
+    bookCountTag.innerText = bookCount - count;
+    currentView = (currentView === 'reading') ? '' : 'reading';
+})
+
+legends.children[2].addEventListener('click', function() {    
+    let count = 0;
+
+    for (let x in bookshelf.children) {
+        if (x==0) continue;
+        if(bookshelf.children[x].tagName === 'DIV') {
+            if (currentView === 'not-yet') {
+                bookshelf.children[x].style.display = 'block';
+                continue;
+            }
+
+            if(bookshelf.children[x].className.split(' ').indexOf('not-yet') == -1) {
+                count += 1;
+                bookshelf.children[x].style.display = 'none';
+            }  else {
+                bookshelf.children[x].style.display = 'block';
+            }
+        }
+    }
+
+    bookCountTag.innerText = bookCount - count;
+    currentView = (currentView === 'not-yet') ? '' : 'not-yet';
+})
+
+
+/**
+ * When the page is closed or refreshed, update the localStorage
+ */
 window.onbeforeunload = function() {
     for (let index in myLibrary) {
         myLibrary[index].show = false;
