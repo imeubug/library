@@ -158,6 +158,10 @@ function removeCard(elem, index) {
     if (_index > -1) {
         myLibrary.splice(_index, 1);
     }
+
+    let count = bookCountTag.innerText * 1;
+    bookCountTag.innerText = count - 1;
+    bookCount -= 1;
 }
 
 /**
