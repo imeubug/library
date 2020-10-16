@@ -19,7 +19,7 @@ A toy project to manage books I have read in 2020.
   * [x] file chooser for the book cover
   * [x] add `default.png` when img file is not specified
 -  Database
-  + [x] local storage
+  * [x] local storage
 - [x] filter by `read`, `reading`, `not-yet`
 - any more ideas?
 
