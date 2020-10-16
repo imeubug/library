@@ -9,7 +9,7 @@ A toy project to manage books I have read in 2020.
 - Database: localStorage
 
 ### Todo
-- [X] CRUD (no Update)
+- CRUD (no Update)
   * [x] Create
   * [x] Read (`populate()`)
   * [x] Delete (right click)
@@ -20,7 +20,8 @@ A toy project to manage books I have read in 2020.
   * [x] add `default.png` when img file is not specified
 -  Database
   * [x] local storage
-- [x] filter by `read`, `reading`, `not-yet`
+- Filter
+  * [x] filter by `read`, `reading`, `not-yet`
 - any more ideas?
 
 ### Progress
