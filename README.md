@@ -25,6 +25,12 @@ A toy project to manage books I have read in 2020.
 - any more ideas?
 
 ### Progress
+2020-10-27
+- Firebase Reading DB complete
+- Firebase Storage read complete
+
+2020-10-26
+- Firebase setup
 
 2020-10-16
 - Filtering added.
