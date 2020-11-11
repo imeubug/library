@@ -1,7 +1,10 @@
 ## Project Library
 A toy project to manage books I have read in 2020.
 
+[Demo](https://library-6b733.firebaseapp.com) (It may be empty when the server is down).
+
 ![demo](demo.gif)
+
 
 ### Tech Stack
 - Language: JavaScript (HTML/CSS)
