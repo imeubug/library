@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "library-6b733"
+    "default": "library-6b733",
+    "main": "library-6b733"
   }
 }

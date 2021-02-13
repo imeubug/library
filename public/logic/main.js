@@ -86,14 +86,14 @@ addNewBookButton.addEventListener('click', e => {
     }
     
     // Get a key for a new Book.
-    var newBookKey = firebase.database().ref().child('books').push().key;
+    let newBookKey = firebase.database().ref().child('books').push().key;
 
     // A new book entry.
     let bookData = new Book(titleTag.value, authorTag.value, filename, read, newBookKey);
     myBooks.push(bookData);
 
     // Write the new post's data simultaneously in the posts list and the user's post list.
-    var updates = {};
+    let updates = {};
     updates['/books/' + newBookKey] = bookData;
 
     firebase.database().ref().update(updates);
